@@ -28,6 +28,14 @@ export function createApp({
     req.clock = clock;
     next();
   });
+  app.get('/', (_req, res) => {
+  res.json({
+    sistema: 'AgendaFacil',
+    status: 'online',
+    mensagem: 'Servidor funcionando corretamente',
+    health: '/api/health',
+  });
+});
   app.use('/api', authRoutes(context), professionalRoutes(context), publicRoutes(context));
   app.use('/api', (_req, _res, next) => next(new HttpError(404, 'Endpoint não encontrado.')));
   if (existsSync(join(frontendDist, 'index.html'))) {

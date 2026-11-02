@@ -3,7 +3,17 @@ import { createPublicController } from '../controllers/publicController.js';
 export default function publicRoutes(context) {
   const router = Router(),
     c = createPublicController(context);
-  router.get('/health', (_req, res) => res.json({ status: 'ok' }));
+  router.get('/health', (_req, res) => {
+  res.json({
+    status: 'ok',
+    sistema: 'AgendaFacil',
+    timestamp: new Date().toISOString(),
+horarioLocal: new Date().toLocaleString('pt-BR', {
+  timeZone: 'America/Araguaina',
+  hour12: false,
+}),
+  });
+});
   router.get('/explore', c.explore);
   router.get('/client/bookings', c.clientBookings);
   router.get('/public/:slug', c.profile);
