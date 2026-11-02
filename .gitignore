@@ -1,0 +1,23 @@
+# Dependências do Node.js
+node_modules/
+**/node_modules/
+
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Banco de dados e arquivos locais
+backend/data/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+npm-debug.log*
+
+# Backups locais
+README-backup-local.md
+README-local-original.md
